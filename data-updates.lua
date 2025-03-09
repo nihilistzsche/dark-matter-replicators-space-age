@@ -68,3 +68,20 @@ if mods["space-age"] then
 		end
 	end
 end
+
+if mods["space-age"] and not settings.startup["replication-in-space"].value then
+	data.raw.lab[gprefix.."replication-lab"].surface_conditions = {
+    {
+      property = "gravity",
+      min = 0.1
+    }
+  }
+  for i = 1, 5 do
+    data.raw["assembling-machine"][gprefix.."replicator-"..i].surface_conditions = {
+      {
+        property = "gravity",
+        min = 0.1
+      }
+    }
+  end
+end

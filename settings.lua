@@ -143,14 +143,7 @@ data:extend({
 		setting_type = "startup",
 		default_value = 25,
 		minimum_value = 1
-	}, {
-		name = "replication-in-space",
-		type = "bool-setting",
-		order = "9-1", --other mod stuff?
-		setting_type = "startup",
-		default_value = false,
 	}
-
 })
 
 if mods["space-age"] then
@@ -162,6 +155,19 @@ if mods["space-age"] then
 			setting_type = "startup",
 			allowed_values = { "None", "All Except Nauvis", "All" },
 			default_value = "None"
+		},
+	})
+end
+
+
+if mods["space-exploration"] or mods["space-age"] then
+	data:extend({
+		{
+			name = "replication-in-space",
+			type = "bool-setting",
+			order = "1-1-3",
+			setting_type = "startup",
+			default_value = false,
 		}
 	})
 end
