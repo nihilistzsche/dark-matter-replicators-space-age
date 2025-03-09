@@ -1,0 +1,13 @@
+{
+    "factorio.versions": [
+        {
+            "name": "Factorio Space Age",
+            "factorioPath": "/mnt/n/Steam/steamapps/common/Factorio/bin/x64/factorio.exe",
+            "active": true
+        }
+    ],
+    "Lua.workspace.userThirdParty": [
+        "/home/nihilistzsche/.vscode-server-insiders/data/User/workspaceStorage/4a99dca46b162876fae29e69da437a2c/justarandomgeek.factoriomod-debug/sumneko-3rd"
+    ],
+    "Lua.workspace.checkThirdParty": "ApplyInMemory"
+}

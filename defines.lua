@@ -1,0 +1,2 @@
+modname = "dmrsa"
+gprefix = modname.."-"

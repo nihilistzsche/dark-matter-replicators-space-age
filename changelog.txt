@@ -1,0 +1,137 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.1.11
+Date: 2023-12-30
+  Bugfixes:
+    - added code to remove products that no longer exist
+          useless recipes will remain, but leaves things intact otherwise
+    - iterate results with pairs, not ipairs
+    - re-do logic results a bit, should not error when a recipe of result has a main product
+  Changes:
+    - some more Krastorio 2 and/or SE replications
+    - tried to add some Noble Metals (bzgold) compatibilty
+    - report anything to discussions
+---------------------------------------------------------------------------------------------------
+Version: 1.1.10
+Date: 2023-01-23
+  Changes:
+    - scan in data-final-fixes to remove a technology prerequisite if it no longer exists (for dmr18 techs)
+      (fixes missing technology "radar" bug with K2SE)
+---------------------------------------------------------------------------------------------------
+Version: 1.1.9
+Date: 2022-11-12
+  Bugfixes:
+    - recipe with 1 result and "" main product (which would use recipe icons, not the item)
+    - Bio Industries was very very out of date. Many more replications work now (wood time increase, take note)
+---------------------------------------------------------------------------------------------------
+Version: 1.1.8
+Date: 2022-11-09
+  Bugfixes:
+    - finding item/fluid results of a recipe was weird. re-did that. Report bugs
+  Changes:
+    - removed SE post-process as a dependency cause it says to
+    - changed how many other mods were detected, now that mods["some_name"] exists in data
+  Additions:
+    - se heat shielding and stone tablets? It allows some more replications to succeed
+
+---------------------------------------------------------------------------------------------------
+Version: 1.1.7
+Date: 2022-10-13
+  Bugfixes:
+    - missing dependencies for angelspetrochem and angelsrefining (thanks for reporting)
+---------------------------------------------------------------------------------------------------
+Version: 1.1.6
+Date: 2022-09-25
+  Bugfixes:
+    - do not error when "replicate space science packs" is set to false and SE is active
+  Changes:
+    - name in new-map ores tab has tenemut ore icon next to it
+---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 2022-08-05
+  Changes:
+    - rebalanced production, utility, and space science packs. It will hurt a little.
+    - removed some log prints
+---------------------------------------------------------------------------------------------------
+Version: 1.1.4
+Date: 2022-08-05
+  Changes:
+    - workaround for SE adding rocket science packs and space science packs
+    - adjust techs further when SE is present: previously: production and utility science
+            now with se: rocket science and space science (roughly the same, balance wise)
+            post on discussions if problems 
+    - replicator techs are no longer "upgrades" and searching for replicator will show all of them in the tech screen
+---------------------------------------------------------------------------------------------------
+Version: 1.1.3
+Date: 2022-05-12
+  Additions:
+    - omnimatter compatibility
+---------------------------------------------------------------------------------------------------
+Version: 1.1.2
+Date: 2021-05-08
+  Changes:
+    - updated autoplace for tenemut, generates similar to uranium
+  Additions:
+    - Setting to allow replicators in space, default false (SE)
+    - Setting to disable generation near spawn
+    - core fragment for SE
+  Bugfixes:
+    - changelog didn't load v_v
+---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 2020-12-15
+  General:
+    - thanks chipgeekjr for the help with this one :P
+  Bugfixes:
+    - Missing prefixes for some bob and angel things
+    - Hopefully fixed the error with process icon whatever thing line 143
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2020-12-04
+  General:
+    - 1.1 release, should be symmetric with 1.0.X updates until 1.1 is stable
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2020-12-03
+  Bug Fixes:
+    - changed some of the icon generation (icons before icon)
+    - bio industries fertilizer names
+    - SE exclusion for the extra science packs
+---------------------------------------------------------------------------------------------------
+Version: 0.18.5
+Date: 2020-06-02
+  Bug Fixes:
+    - LOG PRINTS
+---------------------------------------------------------------------------------------------------
+Version: 0.18.4
+Date: 2020-06-02
+  Changes:
+    - make unique all DMR recipes/items/tech etc to prevent collisions with other mods
+        (may not have prevented *all* collision bugs, and still more work to do)
+---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 2020-03-05
+  Bug Fixes:
+    - boolean precedence error (and is before or, not after) if using Angels without bobs
+
+---------------------------------------------------------------------------------------------------
+Version: 0.18.2
+Date: 2020-03-05
+  General:
+    - Update icon sizes. They look right now
+
+---------------------------------------------------------------------------------------------------
+Version: 0.18.1
+Date: 2020-03-04
+  General:
+    - initial Factorio 0.18+ release
+    - Port of Dark Matter Transmuters_R
+    - all credit to previous authors
+    - previous changes in changelog-previous.txt
+    - any compatibility patches probably require some re-work, post to discussions
+
+  Known Issues:
+    - recipe vs technology icons are interpreted differently (bug)?
+
+  Bug Fixes:
+    - change tenemut mining particle type to "optimized-particle"
+    - fix icon sizes in tenemut tab 
