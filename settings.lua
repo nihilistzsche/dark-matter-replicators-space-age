@@ -14,6 +14,15 @@ for name,repltype in pairs(repltypes) do
 end
 data:extend(repltype_settings)
 
+local planets = { "Nauvis" }
+local default_planet = "Nauvis"
+if mods["space-age"] then
+	table.insert(planets, "Vulcanus")
+	table.insert(planets, "Fulgora")
+	table.insert(planets, "Gleba")
+	table.insert(planets, "Aquilo")
+	default_planet = "Aquilo"
+end
 --These are the other mod settings.  They're fairly straightforward.
 data:extend({
 	{
@@ -24,16 +33,24 @@ data:extend({
 		default_value = true,
 	},
 	{
+		name = "tenemut-spawning-planet",
+		type = "string-setting",
+		order = "1-1-1",
+		setting_type = "startup",
+		allowed_values = planets,
+		default_value = default_planet,
+	},
+	{
 		name = "replstats-speed-base",
 		type = "double-setting",
-		order = "1-1-1",
+		order = "1-1-3",
 		setting_type = "startup",
 		default_value = 1,
 		minimum_value = 0.001
 	}, {
 		name = "replstats-speed-factor",
 		type = "double-setting",
-		order = "1-1-2",
+		order = "1-1-4",
 		setting_type = "startup",
 		default_value = 2,
 		minimum_value = 0.001
@@ -135,3 +152,16 @@ data:extend({
 	}
 
 })
+
+if mods["space-age"] then
+	data:extend({
+		{
+			name = "tenemut-other-planets",
+			type = "string-setting",
+			order = "1-1-2",
+			setting_type = "startup",
+			allowed_values = { "None", "All Except Nauvis", "All" },
+			default_value = "None"
+		}
+	})
+end

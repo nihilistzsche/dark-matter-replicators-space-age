@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2025-03-09
+  Changes:
+    - As I do not feel comfortable releasing my changes to the public domain, I have relicensed
+      this version under the GNU Public License version 3 (GPL3).
+    - Fixed for Factorio 2.0 and Space Age
+    - When Space Age is enabled, you can choose which planet Tenemut will spawn on, defaulting
+      to Aquilo.
+    - Also when Space Age is enabled, you can choose to spawn Tenemut on other planets as well,
+      with options to include Nauvis or not.
+    - Replications for Elevated Rails, Quality, and Space Age have been added when the associated
+      mods are enabled.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.11
 Date: 2023-12-30
   Bugfixes:

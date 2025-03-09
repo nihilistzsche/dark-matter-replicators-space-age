@@ -69,7 +69,7 @@ repltech_recipe("overgrowth-jellynut-soil", "device5")
 repltech_recipe("overgrowth-yumako-soil", "device5")
 repltech_recipe("lava", "device5")
 
-repltech_ore("scrap", 0.5, 6, { tier = "device5" })
-repltech_ore("holmium-ore", 100, 6, { tier = "device5" })
-repltech_ore("calcite", 1, 6, { tier = "device5" })
-repltech_ore("tungsten-ore", 5, 6, { tier = "device5" })
+repltech_ore("scrap", 0.5, 6, { tier = 5 })
+repltech_ore("holmium-ore", 100, 6, { tier = 5 }) -- This technically isnt mined, but a 1% chance from recycling scrap hence the huge mining time.
+repltech_ore("calcite", 1, 6, { tier = 5 })
+repltech_ore("tungsten-ore", 5, 6, { tier = 5 })

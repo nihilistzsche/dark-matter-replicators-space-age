@@ -47,3 +47,24 @@ require("prototypes.repltable.process-costs")
 require("prototypes.repltable.process-prereqs")
 --Parse the replication table and make the replications and their unlock technologies via the table's data
 require("prototypes.repltable.process-actual-creation")
+
+local default_planet = string.lower(settings.startup["tenemut-spawning-planet"].value);
+if data.raw.planet[default_planet] then
+	data.raw.planet[default_planet].map_gen_settings.autoplace_controls[gprefix.."tenemut"] = {}
+	data.raw.planet[default_planet].map_gen_settings.autoplace_settings.entity.settings[gprefix.."tenemut"] = {}
+else -- How?
+	log("Unknown planet selected as starting planet: "..default_planet)
+end
+
+if mods["space-age"] then
+	if settings.startup["tenemut-other-planets"].value ~= "None" then
+		for planet, ptbl in pairs(data.raw.planet) do
+			if planet ~= "nauvis" or settings.startup["tenemut-other-planets"].value == "All" then
+				if ptbl.map_gen_settings and ptbl.map_gen_settings.autoplace_controls and ptbl.map_gen_settings.autoplace_settings then
+					ptbl.map_gen_settings.autoplace_controls[gprefix.."tenemut"] = {}
+					ptbl.map_gen_settings.autoplace_settings.entity.settings[gprefix.."tenemut"] = {}
+				end
+			end
+		end
+	end
+end

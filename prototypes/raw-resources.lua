@@ -167,3 +167,4 @@ data:extend(
 		}
 	},
 })
+resource_autoplace.initialize_patch_set(gprefix.."tenemut", true)
