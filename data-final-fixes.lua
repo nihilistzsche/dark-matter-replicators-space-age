@@ -133,6 +133,17 @@ for _, tech in pairs(techs) do
 				end
 			end
 		end
+		local removed_something
+		repeat
+			removed_something = false
+			for i, ing in pairs(tech.unit.ingredients) do
+				if ing[1]:sub(1, 5) ~= "dmrsa" then
+					table.remove(tech.unit.ingredients, i)
+					removed_something = true
+					break
+				end
+			end
+		until not removed_something
 	end
 end
 
@@ -212,11 +223,15 @@ for rname, recipe in pairs(recipes) do
 	end
 end
 
-
-
-
-
-
-
-
-
+local lab = data.raw.lab["dmrsa-replication-lab"]
+local removed_something
+repeat
+	removed_something = false
+	for i, input in pairs(lab.inputs) do
+		if input:sub(1, 5) ~= "dmrsa" then
+			table.remove(lab.inputs, i)
+			removed_something = true
+			break
+		end
+	end
+until not removed_something

@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 2025-03-10
+  Changes:
+    - Technologies for the replication stages will now vary based on the default tenemut
+      spawning planet setting, and whether or not Space Age is enabled.
+      If the default planet is Nauvis, or Space Age is disabled, the required science packs
+      are the same.
+      If the default planet is Vulcanus, Fulgora, or Gleba, the associated science pack from
+      each planet is added to the requirement.
+      If the default planet is Aquilo, all of the science packs including the four planet
+      sciences are added.
+    - Fix for other mods (including my own) adding science packs to dmr lab and technologies.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 2025-03-09
   Changes:

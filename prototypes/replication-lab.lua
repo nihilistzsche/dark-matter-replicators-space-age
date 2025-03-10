@@ -70,6 +70,6 @@ data:extend({
 			gprefix.."matter-conduit"
 		},
 		module_slots = 2,
-		allowed_module_categories = {"efficiency", "speed", "productivity","quality"}
+		allowed_module_categories = {"efficiency", "speed", "productivity"}
 	}
 })

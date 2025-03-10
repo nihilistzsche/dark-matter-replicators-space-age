@@ -230,7 +230,32 @@ function make_replicator(tier, ingredients, research_prerequisites, research_cos
 	})
 end
 
-
+local automation, logistic, military, chemical, production, utility, space, metallurgic, electromagnetic, agricultural, cryogenic = 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+if settings.startup["tenemut-spawning-planet"].value ~= "Nauvis" then
+	automation = 1
+	logistic = 1
+	chemical = 1
+	production = 1
+	utility = 1
+	space = 1
+	if settings.startup["tenemut-spawning-planet"].value == "Vulcanus" then
+		metallurgic = 1
+	elseif settings.startup["tenemut-spawning-planet"].value == "Fulgora" then
+		electromagnetic = 1
+	elseif settings.startup["tenemut-spawning-planet"].value == "Gleba" then
+		agricultural = 1
+	elseif settings.startup["tenemut-spawning-planet"].value == "Aquilo" then
+		logistic = 1
+		chemical = 1
+		production = 1
+		utility = 1
+		space = 1
+		metallurgic = 1
+		electromagnetic = 1
+		agricultural = 1
+		cryogenic = 1
+	end
+end
 --Create the replicators using the above function
 		--make_replicator(tier, ingredients, research_prerequisites, research_cost, also_unlocks)
 make_replicator(1,
@@ -240,7 +265,7 @@ make_replicator(1,
 		{ name = gprefix.."dark-matter-scoop", amount = 4, type = "item" },
 	},
 	{"electronics"},
-	research(25, 1, 0, 0, 0, 0, 0, 0, 30),
+	research(25, automation+1, logistic, military, chemical, production, utility, space, metallurgic, electromagnetic, agricultural, cryogenic, 30),
 	{gprefix.."dark-matter-scoop", gprefix.."replication-lab"}
 )
 make_replicator(2,
@@ -249,7 +274,7 @@ make_replicator(2,
 		{ name = gprefix.."dark-matter-transducer", amount = 2, type = "item" },
 	},
 	{"logistic-science-pack"},
-	research(50, 1, 1, 0, 0, 0, 0, 0, 30),
+	research(50, automation+1, logistic+1, military, chemical, production, utility, space, metallurgic, electromagnetic, agricultural, cryogenic, 30),
 	{gprefix.."dark-matter-transducer"}
 )
 make_replicator(3,
@@ -258,7 +283,7 @@ make_replicator(3,
 		{ name = gprefix.."dark-matter-transducer", amount = 4, type = "item" },
 	},
 	{"chemical-science-pack"},
-	research(100, 1, 1, 0, 1, 0, 0, 0, 30),
+	research(100, automation+1, logistic+1, military, chemical+1, production, utility, space, metallurgic, electromagnetic, agricultural, cryogenic, 30),
 	{}
 )
 make_replicator(4,
@@ -267,7 +292,7 @@ make_replicator(4,
 		{ name = gprefix.."matter-conduit", amount = 2, type = "item" },
 	},
 	{"production-science-pack"},
-	research(200, 1, 1, 0, 1, 1, 0, 0, 30),
+	research(200, automation+1, logistic+1, military, chemical+1, production+1, utility, space, metallurgic, electromagnetic, agricultural, cryogenic, 30),
 	{gprefix.."matter-conduit"}
 )
 make_replicator(5,
@@ -276,6 +301,6 @@ make_replicator(5,
 		{ name = gprefix.."matter-conduit", amount = 4, type = "item" },
 	},
 	{"utility-science-pack"},
-	research(400, 1, 1, 0, 1, 1, 1, 0, 30),
+	research(400, automation+1, logistic+1, military, chemical+1, production+1, utility+1, space, metallurgic, electromagnetic, agricultural, cryogenic, 30),
 	{}
 )

@@ -1,5 +1,5 @@
 --Generate the "unit" value for a new regular technology
-function research(count, automation, logistic, military, chemical, production, utility, space, researchTime)
+function research(count, automation, logistic, military, chemical, production, utility, space, metallurgic, electromagnetic, agricultural, cryogenic, researchTime)
   local ingredients = {}
   if automation > 0 then
     ingredients[#ingredients + 1] = {"automation-science-pack", automation}
@@ -22,7 +22,18 @@ function research(count, automation, logistic, military, chemical, production, u
   if space > 0 then
     ingredients[#ingredients + 1] = {"space-science-pack", space}
   end
-  
+  if metallurgic > 0 then
+	ingredients[#ingredients + 1] = { "metallurgic-science-pack", metallurgic }
+  end
+  if electromagnetic > 0 then
+	ingredients[#ingredients + 1] = { "electromagnetic-science-pack", electromagnetic }
+  end
+  if agricultural > 0 then
+	ingredients[#ingredients + 1] = { "agricultural-science-pack", agricultural }
+  end
+  if cryogenic > 0 then
+	ingredients[#ingredients + 1] = { "cryogenic-science-pack", cryogenic }
+  end
   return {
     count = count,
     ingredients = ingredients,
