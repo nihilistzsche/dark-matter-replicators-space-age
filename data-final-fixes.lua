@@ -35,67 +35,62 @@ if mods["space-exploration"] then
 	for name, tech in pairs(technologies) do
 		if string.find(name, "^dmrsa") then
 			--log("found one of ours: "..name)
-			for _, difficulty in pairs({ tech, tech.normal, tech.expensive }) do
-				if type(difficulty) == "table" then
-					local unit = difficulty.unit
-					if unit then
-						local ingredients = unit.ingredients
-						if ingredients then
-							local k_previous = nil
-							while true do
-								local k, v = next(ingredients, k_previous)
-								if not k then
-									break
-								end
-								local pack = v[1] or v.name
-								if
-									(pack == "se-rocket-science-pack")
-									or ((k ~= 1) and (pack == "space-science-pack"))
-								then
-									--log("removing: "..pack.." from "..name)
-									if type(k) == "number" and k <= #ingredients then
-										table.remove(ingredients, k)
-									else
-										ingredients[k] = nil
-									end
-								elseif pack == "production-science-pack" then
-									ingredients[k] = { "se-rocket-science-pack", 1 }
-									k_previous = k
-
-									for i, p in pairs(difficulty.prerequisites or {}) do
-										if p == "production-science-pack" then
-											difficulty.prerequisites[i] = "se-rocket-science-pack"
-											break
-										end
-									end
-								elseif pack == "utility-science-pack" then
-									ingredients[k] = { "space-science-pack", 1 }
-									k_previous = k
-
-									for i, p in pairs(difficulty.prerequisites or {}) do
-										if p == "utility-science-pack" then
-											difficulty.prerequisites[i] = "space-science-pack"
-											break
-										end
-									end
+			if type(tech) == "table" then
+				local unit = tech.unit
+				if unit then
+					local ingredients = unit.ingredients
+					if ingredients then
+						local k_previous = nil
+						while true do
+							local k, v = next(ingredients, k_previous)
+							if not k then
+								break
+							end
+							local pack = v.name
+							if (pack == "se-rocket-science-pack") or ((k ~= 1) and (pack == "space-science-pack")) then
+								--log("removing: "..pack.." from "..name)
+								if type(k) == "number" and k <= #ingredients then
+									table.remove(ingredients, k)
 								else
-									k_previous = k
+									ingredients[k] = nil
 								end
+							elseif pack == "production-science-pack" then
+								ingredients[k] = { "se-rocket-science-pack", 1 }
+								k_previous = k
+
+								for i, p in pairs(tech.prerequisites or {}) do
+									if p == "production-science-pack" then
+										tech.prerequisites[i] = "se-rocket-science-pack"
+										break
+									end
+								end
+							elseif pack == "utility-science-pack" then
+								ingredients[k] = { "space-science-pack", 1 }
+								k_previous = k
+
+								for i, p in pairs(tech.prerequisites or {}) do
+									if p == "utility-science-pack" then
+										tech.prerequisites[i] = "space-science-pack"
+										break
+									end
+								end
+							else
+								k_previous = k
 							end
 						end
-					end -- end if unit
-
-					if string.find(name, "production%-science%-pack") and technologies["production-science-pack"] then
-						add_prereq_if_missing(difficulty, "production-science-pack")
-						replaced_production_science_pack = true
 					end
+				end -- end if unit
 
-					if string.find(name, "utility%-science%-pack") and technologies["utility-science-pack"] then
-						add_prereq_if_missing(difficulty, "utility-science-pack")
-						replaced_utility_science_pack = true
-					end
-				end -- end type difficulty == table
-			end
+				if string.find(name, "production%-science%-pack") and technologies["production-science-pack"] then
+					add_prereq_if_missing(tech, "production-science-pack")
+					replaced_production_science_pack = true
+				end
+
+				if string.find(name, "utility%-science%-pack") and technologies["utility-science-pack"] then
+					add_prereq_if_missing(tech, "utility-science-pack")
+					replaced_utility_science_pack = true
+				end
+			end -- end type difficulty == table
 		end
 	end
 
@@ -126,30 +121,18 @@ end
 local techs = data.raw.technology
 for _, tech in pairs(techs) do
 	if string.find(tech.name, "^dmrsa") then
-		local difficulties = { tech, tech.normal or nil, tech.expensive or nil }
-		for _, difficulty in pairs(difficulties) do
-			local prerequisites = difficulty.prerequisites
-			if prerequisites then
-				for k, prereq in pairs(prerequisites) do
-					if not techs[prereq] then
-						prerequisites[k] = nil
-						log("removed prereq " .. prereq .. " from " .. tech.name)
-					end
+		local unit = tech.unit
+		if unit and dmrsa_research_units[tech.name] then
+			unit.ingredients = dmrsa_research_units[tech.name]
+		end
+		local prerequisites = tech.prerequisites
+		if prerequisites then
+			for k, prereq in pairs(prerequisites) do
+				if not techs[prereq] then
+					prerequisites[k] = nil
+					log("removed prereq " .. prereq .. " from " .. tech.name)
 				end
 			end
-		end
-		if not string.find(tech.name, "replication") then
-			local removed_something
-			repeat
-				removed_something = false
-				for i, ing in pairs(tech.unit.ingredients) do
-					if ing[1]:sub(1, 5) ~= "dmrsa" then
-						table.remove(tech.unit.ingredients, i)
-						removed_something = true
-						break
-					end
-				end
-			until not removed_something
 		end
 	end
 end
