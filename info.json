@@ -1,10 +1,10 @@
 {
   "name": "dark-matter-replicators-space-age",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "factorio_version": "2.0",
   "title": "Dark Matter Replicators Space Age",
   "author": "Nihilistzsche for Space Age, Honktown for .18+ (see authors.txt for more details",
-  "homepage": "https://github.com/nihilistzsche/dark-matter-replicators-spage-age",
+  "homepage": "https://github.com/nihilistzsche/dark-matter-replicators-space-age",
   "description": "This mod adds replicators, machines which can produce items using nothing but electricity. Lower tiers of replicators are the most energy efficient and can essentially transform depleted, empty land into a resource. Higher tier replicators can simplify production lines or otherwise act as a convenience. Tier 1 replicators can replace depleted mining drills, allowing your expansion to be for growth rather than necessity.",
   "dependencies": [
 		"base",

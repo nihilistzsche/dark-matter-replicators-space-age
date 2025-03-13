@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.4
+Date: 2025-03-12
+  Changes:
+    - Typo on the github url fixed.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 2025-03-11
+  Changes:
+    - Moved Elevated Rails and Rail Supports to tier 4 device from 5, as they can be unlocked
+      before space science.
+    - Quality Modules are defined similarly now to the other modules and will not be locked
+      to just the tier 5 devices.
+  Bugfixes:
+    - Seems some DMR techs are having normal science packs add to their research ingredients,
+      and as DMR labs only accept DMR resources, fixing them having non DMR ingredients.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.2
 Date: 2025-03-10
   Bugfixes:
